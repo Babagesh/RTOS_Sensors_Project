@@ -33,6 +33,8 @@ component:
 - {id: clock_manager}
 - {id: device_init}
 - {id: freertos}
+- instance: [mikroe]
+  id: i2cspm
 - instance: [led0]
   id: simple_led
 - {id: sl_main}

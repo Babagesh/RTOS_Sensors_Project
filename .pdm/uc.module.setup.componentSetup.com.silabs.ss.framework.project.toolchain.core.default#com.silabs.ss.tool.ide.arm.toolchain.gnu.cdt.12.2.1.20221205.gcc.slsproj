@@ -187,6 +187,15 @@
             <file name="sli_sleeptimer.h" uri="studio:/sdk/platform/service/sleeptimer/inc/sli_sleeptimer.h"/>
           </folder>
         </folder>
+        <folder name="udelay">
+          <folder name="src">
+            <file name="sl_udelay.c" uri="studio:/sdk/platform/service/udelay/src/sl_udelay.c"/>
+            <file name="sl_udelay_armv6m_gcc.S" uri="studio:/sdk/platform/service/udelay/src/sl_udelay_armv6m_gcc.S"/>
+          </folder>
+          <folder name="inc">
+            <file name="sl_udelay.h" uri="studio:/sdk/platform/service/udelay/inc/sl_udelay.h"/>
+          </folder>
+        </folder>
       </folder>
       <folder name="CMSIS">
         <folder name="Core">
@@ -215,6 +224,7 @@
           <file name="em_cmu.c" uri="studio:/sdk/platform/emlib/src/em_cmu.c"/>
           <file name="em_emu.c" uri="studio:/sdk/platform/emlib/src/em_emu.c"/>
           <file name="em_gpio.c" uri="studio:/sdk/platform/emlib/src/em_gpio.c"/>
+          <file name="em_i2c.c" uri="studio:/sdk/platform/emlib/src/em_i2c.c"/>
           <file name="em_msc.c" uri="studio:/sdk/platform/emlib/src/em_msc.c"/>
           <file name="em_prs.c" uri="studio:/sdk/platform/emlib/src/em_prs.c"/>
           <file name="em_system.c" uri="studio:/sdk/platform/emlib/src/em_system.c"/>
@@ -235,6 +245,7 @@
           <file name="em_core_generic.h" uri="studio:/sdk/platform/emlib/inc/em_core_generic.h"/>
           <file name="em_emu.h" uri="studio:/sdk/platform/emlib/inc/em_emu.h"/>
           <file name="em_gpio.h" uri="studio:/sdk/platform/emlib/inc/em_gpio.h"/>
+          <file name="em_i2c.h" uri="studio:/sdk/platform/emlib/inc/em_i2c.h"/>
           <file name="em_msc.h" uri="studio:/sdk/platform/emlib/inc/em_msc.h"/>
           <file name="em_msc_compat.h" uri="studio:/sdk/platform/emlib/inc/em_msc_compat.h"/>
           <file name="em_prs.h" uri="studio:/sdk/platform/emlib/inc/em_prs.h"/>
@@ -251,6 +262,14 @@
           </folder>
           <folder name="inc">
             <file name="sl_gpio.h" uri="studio:/sdk/platform/driver/gpio/inc/sl_gpio.h"/>
+          </folder>
+        </folder>
+        <folder name="i2cspm">
+          <folder name="src">
+            <file name="sl_i2cspm.c" uri="studio:/sdk/platform/driver/i2cspm/src/sl_i2cspm.c"/>
+          </folder>
+          <folder name="inc">
+            <file name="sl_i2cspm.h" uri="studio:/sdk/platform/driver/i2cspm/inc/sl_i2cspm.h"/>
           </folder>
         </folder>
         <folder name="leddrv">
@@ -354,11 +373,11 @@
       </folder>
     </folder>
   </folder>
-  <file name="app.c" linked="false" uri="studio:/sdk/app/common/example/blink_kernel_freertos/app.c"/>
-  <file name="blink.c" linked="false" uri="studio:/sdk/app/common/example/blink_kernel_freertos/blink.c"/>
-  <file name="app.h" linked="false" uri="studio:/sdk/app/common/example/blink_kernel_freertos/app.h"/>
-  <file name="blink.h" linked="false" uri="studio:/sdk/app/common/example/blink_kernel_freertos/blink.h"/>
-  <file name="readme.md" linked="false" uri="studio:/sdk/app/common/example/blink_kernel_freertos/readme.md"/>
+  <file name="app.c" linked="false" uri="studio:/project/app.c"/>
+  <file name="blink.c" linked="false" uri="studio:/project/blink.c"/>
+  <file name="app.h" linked="false" uri="studio:/project/app.h"/>
+  <file name="blink.h" linked="false" uri="studio:/project/blink.h"/>
+  <file name="readme.md" linked="false" uri="studio:/project/readme.md"/>
   <file name="main.c" generated="true" linked="false"/>
   <includePath uri="studio:/project/"/>
   <includePath uri="studio:/sdk/platform/Device/SiliconLabs/EFR32MG24/Include"/>
@@ -376,6 +395,7 @@
   <includePath uri="studio:/sdk/util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure"/>
   <includePath uri="studio:/sdk/platform/driver/gpio/inc"/>
   <includePath uri="studio:/sdk/platform/peripheral/inc"/>
+  <includePath uri="studio:/sdk/platform/driver/i2cspm/inc"/>
   <includePath uri="studio:/sdk/platform/service/interrupt_manager/inc"/>
   <includePath uri="studio:/sdk/platform/service/interrupt_manager/src"/>
   <includePath uri="studio:/sdk/platform/service/interrupt_manager/inc/arm"/>
@@ -385,6 +405,7 @@
   <includePath uri="studio:/sdk/platform/service/sl_main/inc"/>
   <includePath uri="studio:/sdk/platform/service/sl_main/src"/>
   <includePath uri="studio:/sdk/platform/service/sleeptimer/inc"/>
+  <includePath uri="studio:/sdk/platform/service/udelay/inc"/>
   <macroDefinition name="DEBUG_EFM"/>
   <macroDefinition name="EFR32MG24B210F1536IM48"/>
   <macroDefinition name="SL_CODE_COMPONENT_SYSTEM" value="system"/>

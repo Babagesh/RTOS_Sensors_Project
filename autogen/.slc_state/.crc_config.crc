@@ -6,6 +6,7 @@ sl_clock_manager_tree_config.h=-1624820971
 sl_core_config.h=-2018153270
 sl_device_init_dcdc_config.h=467347643
 sl_device_init_emu_config.h=1238190016
+sl_i2cspm_mikroe_config.h=-1551433360
 sl_main_start_task_config.h=251875913
 sl_memory_manager_config.h=-209387538
 sl_memory_manager_region_config.h=1350225654
