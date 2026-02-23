@@ -38,10 +38,10 @@ extern "C" {
 #include "sl_i2cspm.h"
 
 
-#define SL_I2CSPM_MIKROE_PRESENT
+#define SL_I2CSPM_QWIIC_PRESENT
 
 
-extern sl_i2cspm_t *sl_i2cspm_mikroe;
+extern sl_i2cspm_t *sl_i2cspm_qwiic;
 
 void sl_i2cspm_init_instances(void);
 

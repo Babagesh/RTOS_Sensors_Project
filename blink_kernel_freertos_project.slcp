@@ -33,7 +33,7 @@ component:
 - {id: clock_manager}
 - {id: device_init}
 - {id: freertos}
-- instance: [mikroe]
+- instance: [qwiic]
   id: i2cspm
 - instance: [btn0, btn1]
   id: simple_button

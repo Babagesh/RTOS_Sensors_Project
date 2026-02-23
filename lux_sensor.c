@@ -18,6 +18,8 @@
 #include "sl_simple_led.h"
 #include "sl_simple_led_instances.h"
 #include "FreeRTOS.h"
+#include "queue.h"
+#include "mystruct-def.h"
 #include "task.h"
 
 /*******************************************************************************
