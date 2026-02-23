@@ -14,12 +14,15 @@
  * sections of the MSLA applicable to Source Code.
  *
  ******************************************************************************/
-#include "blink.h"
+#include "FreeRTOS.h"
+#include "func_init.h"
+#include "queue.h"
 
 /***************************************************************************//**
  * Initialize application.
  ******************************************************************************/
 void app_init(void)
 {
-  blink_init();
+
+  uart_recieve_init();
 }

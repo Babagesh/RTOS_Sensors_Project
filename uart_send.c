@@ -52,7 +52,7 @@
  *********************   LOCAL FUNCTION PROTOTYPES   ***************************
  ******************************************************************************/
 
-static void blink_task(void *arg);
+static void uart_send_task(void *arg);
 
 /*******************************************************************************
  **************************   GLOBAL FUNCTIONS   *******************************
@@ -61,7 +61,7 @@ static void blink_task(void *arg);
 /***************************************************************************//**
  * Initialize blink example.
  ******************************************************************************/
-void blink_init(void)
+void uart_send_init(void)
 {
   TaskHandle_t xHandle = NULL;
 
@@ -71,7 +71,7 @@ void blink_init(void)
   static StackType_t  xStack[BLINK_TASK_STACK_SIZE];
 
   // Create Blink Task without using any dynamic memory allocation
-  xHandle = xTaskCreateStatic(blink_task,
+  xHandle = xTaskCreateStatic(uart_send_task,
                               "blink task",
                               BLINK_TASK_STACK_SIZE,
                               ( void * ) NULL,
@@ -89,7 +89,7 @@ void blink_init(void)
   BaseType_t xReturned = pdFAIL;
 
   // Create Blink Task using dynamic memory allocation
-  xReturned = xTaskCreate(blink_task,
+  xReturned = xTaskCreate(uart_send_task,
                           "blink task",
                           BLINK_TASK_STACK_SIZE,
                           ( void * ) NULL,
@@ -106,7 +106,7 @@ void blink_init(void)
 /*******************************************************************************
  * Blink task.
  ******************************************************************************/
-static void blink_task(void *arg)
+static void uart_send_task(void *arg)
 {
   (void)&arg;
 
@@ -114,10 +114,6 @@ static void blink_task(void *arg)
   const TickType_t xDelay = pdMS_TO_TICKS(TOOGLE_DELAY_MS);;
 
   while (1) {
-    //Wait for specified delay
-    vTaskDelay(xDelay);
 
-    // Toggle led
-    sl_led_toggle(&LED_INSTANCE);
   }
 }

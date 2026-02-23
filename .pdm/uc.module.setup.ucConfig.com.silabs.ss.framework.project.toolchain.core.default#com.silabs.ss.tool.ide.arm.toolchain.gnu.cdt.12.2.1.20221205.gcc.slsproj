@@ -14,6 +14,12 @@
     <file name="sl_memory_manager_config.h" generated="true" linked="false"/>
     <file name="sl_core_config.h" generated="true" linked="false"/>
     <file name="sl_i2cspm_mikroe_config.h" generated="true" linked="false"/>
+    <file name="uartdrv_config.h" generated="true" linked="false"/>
+    <file name="dmadrv_config.h" generated="true" linked="false"/>
+    <file name="sl_uartdrv_eusart_vcom_config.h" generated="true" linked="false"/>
+    <file name="sl_simple_button_btn0_config.h" generated="true" linked="false"/>
+    <file name="sl_simple_button_btn1_config.h" generated="true" linked="false"/>
+    <file name="sl_simple_button_config.h" generated="true" linked="false"/>
   </folder>
   <includePath uri="studio:/project/config"/>
 </project>

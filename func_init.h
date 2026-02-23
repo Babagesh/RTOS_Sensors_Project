@@ -21,6 +21,8 @@
 /***************************************************************************//**
  * Initialize blink example
  ******************************************************************************/
-void blink_init(void);
-
+void uart_recieve_init(void);
+void uart_send_init(void);
+void lux_init(void);
+void temp_init(void);
 #endif  // BLINK_H

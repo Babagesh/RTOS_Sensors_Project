@@ -176,6 +176,16 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_emu.h</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_eusart.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_eusart.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_eusart_compat.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_eusart_compat.h</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_gpio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_gpio.h</locationURI>
@@ -184,6 +194,11 @@
 			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_i2c.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_i2c.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_ldma.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_ldma.h</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_msc.h</name>
@@ -226,6 +241,11 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_timer.h</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_usart.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_usart.h</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2025.6.2/platform/emlib/inc/em_version.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_version.h</locationURI>
@@ -251,6 +271,11 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_emu.c</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emlib/src/em_eusart.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_eusart.c</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2025.6.2/platform/emlib/src/em_gpio.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_gpio.c</locationURI>
@@ -259,6 +284,11 @@
 			<name>simplicity_sdk_2025.6.2/platform/emlib/src/em_i2c.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_i2c.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emlib/src/em_ldma.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_ldma.c</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2025.6.2/platform/emlib/src/em_msc.c</name>
@@ -279,6 +309,11 @@
 			<name>simplicity_sdk_2025.6.2/platform/emlib/src/em_timer.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_timer.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emlib/src/em_usart.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_usart.c</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2025.6.2/platform/peripheral/inc/peripheral_sysrtc.h</name>
@@ -366,6 +401,26 @@
 			<locationURI>STUDIO_SDK_LOC/platform/CMSIS/RTOS2/Source/os_systick.c</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2025.6.2/platform/driver/button/inc/sl_button.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/driver/button/inc/sl_button.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/driver/button/inc/sl_simple_button.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/driver/button/inc/sl_simple_button.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/driver/button/src/sl_button.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/driver/button/src/sl_button.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/driver/button/src/sl_simple_button.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/driver/button/src/sl_simple_button.c</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2025.6.2/platform/driver/gpio/inc/sl_gpio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/driver/gpio/inc/sl_gpio.h</locationURI>
@@ -404,6 +459,31 @@
 			<name>simplicity_sdk_2025.6.2/platform/driver/leddrv/src/sl_simple_led.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/driver/leddrv/src/sl_simple_led.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emdrv/common/inc/ecode.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emdrv/common/inc/ecode.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emdrv/dmadrv/inc/dmadrv.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emdrv/dmadrv/inc/dmadrv.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emdrv/dmadrv/src/dmadrv.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emdrv/dmadrv/src/dmadrv.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emdrv/uartdrv/inc/uartdrv.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emdrv/uartdrv/inc/uartdrv.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emdrv/uartdrv/src/uartdrv.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emdrv/uartdrv/src/uartdrv.c</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2025.6.2/platform/service/clock_manager/inc/sl_clock_manager.h</name>
@@ -959,6 +1039,11 @@
 			<name>simplicity_sdk_2025.6.2/platform/Device/SiliconLabs/EFR32MG24/Source/system_efr32mg24.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/Device/SiliconLabs/EFR32MG24/Source/system_efr32mg24.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2025.6.2/platform/emdrv/dmadrv/inc/s2_signals/dmadrv_signals.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emdrv/dmadrv/inc/s2_signals/dmadrv_signals.h</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2025.6.2/platform/service/interrupt_manager/inc/arm/cmsis_nvic_virtual.h</name>
