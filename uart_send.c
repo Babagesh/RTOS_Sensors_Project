@@ -22,6 +22,7 @@
 #include "sl_uartdrv_instances.h"
 #include "queue.h"
 #include "task.h"
+#include "stdio.h"
 
 /*******************************************************************************
  *******************************   DEFINES   ***********************************
@@ -70,6 +71,10 @@ static UARTDRV_Handle_t uart_send_handle;
 void uart_send_init(void)
 {
   TaskHandle_t xHandle = NULL;
+  transmit_queue_handle = xQueueCreateStatic(5,                   // queue length
+                                             sizeof(sensor_data),   // item size
+                                             transmit_queue_buffer,  // storage area
+                                             &transmit_queue);
 
 #if (EXAMPLE_USE_STATIC_ALLOCATION == 1)
 
@@ -116,37 +121,50 @@ static void uart_send_task(void *arg)
 {
   (void)&arg;
   sensor_data data;
-  transmit_queue_handle = xQueueCreateStatic(5,                   // queue length
-                                           sizeof(sensor_data),   // item size
-                                           transmit_queue_buffer,  // storage area
-                                           &transmit_queue);
 
   uart_send_handle = sl_uartdrv_get_default();
+  char uart_tx_string[128];
   while (1)
   {
-      xQueueRecieve(transmit_queue_handle, &data, pdMS_TO_TICKS(portMAX_DELAY));
+      xQueueReceive(transmit_queue_handle, &data, portMAX_DELAY);
       if(data.type == 0) // Temp sensor reading
         {
-          char uart_tx_string[128];
-          sprintf("Temp Sensor Reading: %f", data.value);
+          sprintf(uart_tx_string, "Temp Sensor Reading: %.2f\r\n", data.value);
           UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
         }
       else if(data.type == 1) // Lux Sensor reading
         {
-          char uart_tx_string[128];
-          sprintf("Lux Sensor Reading: %f", data.value);
+          sprintf(uart_tx_string, "Lux Sensor Reading: %.2f\r\n", data.value);
           UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
         }
       else if(data.type == 2) // Temp sensor status
         {
           if(data.value == 1)
             {
-
+              sprintf(uart_tx_string, "Temp/Humid Sensor detected and working!: \r\n");
+              UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
             }
-
+          else if(data.value == 0)
+            {
+              sprintf(uart_tx_string, "Temp Sensor not plugged in or detected! \r\n");
+              UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
+            }
 
         }
       else if(data.type == 3) // Lux Sensor Status
+        {
+          if(data.value == 1)
+          {
+            sprintf(uart_tx_string, "Lux Sensor detected and working!");
+            UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
+          }
+        else if(data.value == 0)
+          {
+            sprintf(uart_tx_string, "Lux Sensor not plugged in or detected!");
+            UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
+          }
+        }
+      else if(data.type == 4)
         {
 
         }
