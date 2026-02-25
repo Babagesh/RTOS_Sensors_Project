@@ -57,6 +57,7 @@ static void uart_send_task(void *arg);
 QueueHandle_t transmit_queue_handle;
 StaticQueue_t transmit_queue;
 uint8_t transmit_queue_buffer[sizeof(sensor_data) * 5];
+static UARTDRV_Handle_t uart_send_handle;
 
 
 /*******************************************************************************
@@ -114,9 +115,40 @@ void uart_send_init(void)
 static void uart_send_task(void *arg)
 {
   (void)&arg;
+  sensor_data data;
+  transmit_queue_handle = xQueueCreateStatic(5,                   // queue length
+                                           sizeof(sensor_data),   // item size
+                                           transmit_queue_buffer,  // storage area
+                                           &transmit_queue);
+
+  uart_send_handle = sl_uartdrv_get_default();
+  while (1)
+  {
+      xQueueRecieve(transmit_queue_handle, &data, pdMS_TO_TICKS(portMAX_DELAY));
+      if(data.type == 0) // Temp sensor reading
+        {
+          char uart_tx_string[128];
+          sprintf("Temp Sensor Reading: %f", data.value);
+          UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
+        }
+      else if(data.type == 1) // Lux Sensor reading
+        {
+          char uart_tx_string[128];
+          sprintf("Lux Sensor Reading: %f", data.value);
+          UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
+        }
+      else if(data.type == 2) // Temp sensor status
+        {
+          if(data.value == 1)
+            {
+
+            }
 
 
-  while (1) {
+        }
+      else if(data.type == 3) // Lux Sensor Status
+        {
 
+        }
   }
 }

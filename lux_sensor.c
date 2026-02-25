@@ -142,17 +142,33 @@ static void lux_task(void *arg)
 
                 bool i2c_ret = I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
 
-                if(!i2c_ret)
-                  {
+
+              if(!i2c_ret)
+              {
                     if(rx_buf[0] == 0x81)
                     {
-                      sensor_data status_msg;
-                      status_msg.type = 3; // DIFFERENCE 6: Type 3 is Lux Status
-                      status_msg.value = 1.0;
-                      xQueueSend(transmit_queue_handle, &status_msg, 0);
+                      sensor_data status;
+                      status.type = 3;
+                      status.value = 1.0;
+                      xQueueSend(transmit_queue_handle, &status, 0);
                     }
-                  }
+                    else
+                     {
+                       sensor_data status;
+                       status.type = 3;
+                       status.value = 0;
+                       xQueueSend(transmit_queue_handle, &status, 0);
+                     }
+                }
+              else
+                {
+                  sensor_data status;
+                  status.type = 3;
+                  status.value = 0;
+                  xQueueSend(transmit_queue_handle, &status, 0);
+                }
               }
+
             else if(!strncmp(cmd.cmd, "pr", 2))
               {
                 if(cmd.time != 0)

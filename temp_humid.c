@@ -17,6 +17,7 @@
 
 #include "sl_simple_led.h"
 #include "sl_simple_led_instances.h"
+#include "sl_simple_button_instances.h"
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "task.h"
@@ -144,12 +145,26 @@ static void temp_task(void *arg)
                     i2c_ret = I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
                     if(!i2c_ret)
                     {
-                      sensor_data status_msg;
-                      status_msg.type = 2;
-                      status_msg.value = 1.0;
-                      xQueueSend(transmit_queue_handle, &status_msg, 0);
+                      sensor_data msg;
+                      msg.type = 2;
+                      msg.value = 1.0;
+                      xQueueSend(transmit_queue_handle, &msg, 0);
                     }
+                    else
+                      {
+                        sensor_data msg;
+                         msg.type = 2;
+                         msg.value = 0;
+                         xQueueSend(transmit_queue_handle, &msg, 0);
+                      }
 
+                  }
+                else
+                  {
+                    sensor_data msg;
+                     msg.type = 2;
+                     msg.value = 0;
+                     xQueueSend(transmit_queue_handle, &msg, 0);
                   }
 
               }
