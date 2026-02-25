@@ -43,7 +43,7 @@ uint8_t light_queue_buffer[sizeof(light_command) * 5];
 #endif
 
 #ifndef BLINK_TASK_STACK_SIZE
-#define BLINK_TASK_STACK_SIZE      configMINIMAL_STACK_SIZE
+#define BLINK_TASK_STACK_SIZE      1024
 #endif
 
 #ifndef BLINK_TASK_PRIO
@@ -142,7 +142,6 @@ static void uart_recieve_task(void *arg)
 
   while (1) {
       UARTDRV_ReceiveB(uart_handle, &uart_rx_byte, 1);
-      UARTDRV_TransmitB(uart_handle, &uart_rx_byte, 1);
       if(uart_rx_byte =='\n' || uart_rx_byte == '\r')
       {
           uart_rx_bytes[buffer_index] = '\0';

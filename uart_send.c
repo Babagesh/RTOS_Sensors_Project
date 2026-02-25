@@ -35,7 +35,7 @@
 #endif
 
 #ifndef BLINK_TASK_STACK_SIZE
-#define BLINK_TASK_STACK_SIZE      configMINIMAL_STACK_SIZE
+#define BLINK_TASK_STACK_SIZE      1024
 #endif
 
 #ifndef BLINK_TASK_PRIO
@@ -155,12 +155,12 @@ static void uart_send_task(void *arg)
         {
           if(data.value == 1)
           {
-            sprintf(uart_tx_string, "Lux Sensor detected and working!");
+            sprintf(uart_tx_string, "Lux Sensor detected and working!\r\n");
             UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
           }
         else if(data.value == 0)
           {
-            sprintf(uart_tx_string, "Lux Sensor not plugged in or detected!");
+            sprintf(uart_tx_string, "Lux Sensor not plugged in or detected!\r\n");
             UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
           }
         }
