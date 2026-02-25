@@ -66,7 +66,7 @@ autogen/sl_i2cspm_init.o: ../autogen/sl_i2cspm_init.c \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_enum.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/clock_manager/inc/sl_clock_manager.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_clock.h \
- /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/sl_i2cspm_mikroe_config.h
+ /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/sl_i2cspm_qwiic_config.h
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/driver/i2cspm/inc/sl_i2cspm.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/Device/SiliconLabs/EFR32MG24/Include/em_device.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/Device/SiliconLabs/EFR32MG24/Include/efr32mg24b210f1536im48.h:
@@ -134,4 +134,4 @@ autogen/sl_i2cspm_init.o: ../autogen/sl_i2cspm_init.c \
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_enum.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/clock_manager/inc/sl_clock_manager.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_clock.h:
-/Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/sl_i2cspm_mikroe_config.h:
+/Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/sl_i2cspm_qwiic_config.h:

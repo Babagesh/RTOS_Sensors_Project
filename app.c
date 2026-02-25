@@ -25,4 +25,5 @@ void app_init(void)
 {
 
   uart_recieve_init();
+  temp_init();
 }

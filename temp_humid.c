@@ -18,7 +18,11 @@
 #include "sl_simple_led.h"
 #include "sl_simple_led_instances.h"
 #include "FreeRTOS.h"
+#include "queue.h"
 #include "task.h"
+#include "sl_i2cspm_instances.h"
+#include "mystruct-def.h"
+#include "string.h"
 
 /*******************************************************************************
  *******************************   DEFINES   ***********************************
@@ -50,6 +54,10 @@
  ******************************************************************************/
 
 static void temp_task(void *arg);
+extern QueueHandle_t temp_queue_handle;
+extern QueueHandle_t transmit_queue_handle;
+
+
 
 /*******************************************************************************
  **************************   GLOBAL FUNCTIONS   *******************************
@@ -108,10 +116,121 @@ static void temp_task(void *arg)
   (void)&arg;
 
   //Use the provided calculation macro to convert milliseconds to OS ticks
-  const TickType_t xDelay = pdMS_TO_TICKS(TOOGLE_DELAY_MS);;
+  TickType_t cur_delay = portMAX_DELAY;
+  I2C_TransferSeq_TypeDef i2c_req;
+  uint8_t tx_buf[1];
+  uint8_t rx_buf[6];
 
   while (1) {
-    //Wait for specified delay
+      temp_command cmd;
+      if(xQueueReceive(temp_queue_handle, &cmd, cur_delay) == pdPASS)
+        {
+            if(!strncmp(cmd.cmd, "sc", 2))
+              {
+                tx_buf[0] = 0x89;
+                i2c_req.addr = (0x44 << 1);
+                i2c_req.flags = I2C_FLAG_WRITE;
+                i2c_req.buf[0].data = tx_buf;
+                i2c_req.buf[0].len = 1;
+
+                bool i2c_ret = I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
+
+                if(!i2c_ret)
+                  {
+                    vTaskDelay(pdMS_TO_TICKS(10));
+                    i2c_req.flags = I2C_FLAG_READ;
+                    i2c_req.buf[0].data = rx_buf;
+                    i2c_req.buf[0].len = 6;
+                    i2c_ret = I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
+                    if(!i2c_ret)
+                    {
+                      sensor_data status_msg;
+                      status_msg.type = 2;
+                      status_msg.value = 1.0;
+                      xQueueSend(transmit_queue_handle, &status_msg, 0);
+                    }
+
+                  }
+
+              }
+            else if(!strncmp(cmd.cmd, "or", 2))
+              {
+                tx_buf[0] =0xFD;
+                i2c_req.addr = (0x44 << 1);
+                i2c_req.flags = I2C_FLAG_WRITE;
+                i2c_req.buf[0].data = tx_buf;
+                i2c_req.buf[0].len = 1;
+                I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
+              }
+            else if(!strncmp(cmd.cmd, "pr", 2))
+              {
+                if(cmd.time != 0)
+                  {
+                    cur_delay = pdMS_TO_TICKS(cmd.time);
+                  }
+                 tx_buf[0] =0xFD;
+                 i2c_req.addr = (0x44 << 1);
+                 i2c_req.flags = I2C_FLAG_WRITE;
+                 i2c_req.buf[0].data = tx_buf;
+                 i2c_req.buf[0].len = 1;
+                 I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
+
+              }
+            else if(!strncmp(cmd.cmd, "cr", 2))
+              {
+                cur_delay = portMAX_DELAY;
+              }
+
+
+              // Read the data if the command is or or pr.
+
+            if(!strncmp(cmd.cmd, "or", 2) || !strncmp(cmd.cmd, "pr", 2))
+              {
+                vTaskDelay(pdMS_TO_TICKS(100));
+                i2c_req.flags = I2C_FLAG_READ;
+                i2c_req.buf[0].data = rx_buf;
+                i2c_req.buf[0].len = 6;
+
+                bool i2c_ret = I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
+                if(i2c_ret == 0)
+                  {
+                    uint16_t temp = (rx_buf[0] << 8) | rx_buf[1];
+                    float temp_final = -45.0f + (175.0f * (float)temp / 65535.0f);
+
+                    sensor_data data;
+                    data.type = 0;
+                    data.value =temp_final;
+                    xQueueSend(transmit_queue_handle, &data, 0);
+                  }
+              }
+
+        }
+      // Queue didn't receive any command, if a periodic read is set read the sensor
+      else if(cur_delay != portMAX_DELAY)
+        {
+                  tx_buf[0] = 0xFD;
+                  i2c_req.addr = (0x44 << 1);
+                  i2c_req.flags = I2C_FLAG_WRITE;
+                  i2c_req.buf[0].data = tx_buf;
+                  i2c_req.buf[0].len = 1;
+                  I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
+
+                  vTaskDelay(pdMS_TO_TICKS(10));
+
+                  i2c_req.flags = I2C_FLAG_READ;
+                  i2c_req.buf[0].data = rx_buf;
+                  i2c_req.buf[0].len = 6;
+
+                  if (I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req) == 0) {
+                      uint16_t raw_temp = (rx_buf[0] << 8) | rx_buf[1];
+                      float temp_final = -45.0f + (175.0f * (float)raw_temp / 65535.0f);
+
+                      sensor_data data;
+                      data.type = 0;
+                      data.value =temp_final;
+                      xQueueSend(transmit_queue_handle, &data, 0);
+                  }
+        }
 
   }
 }

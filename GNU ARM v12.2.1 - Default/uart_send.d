@@ -8,6 +8,7 @@ uart_send.o: ../uart_send.c \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_code_classification.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sli_code_classification.h \
  /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/autogen/sl_simple_led_instances.h \
+ ../mystruct-def.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/FreeRTOS.h \
  /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/FreeRTOSConfig.h \
  /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/autogen/RTE_Components.h \
@@ -76,8 +77,10 @@ uart_send.o: ../uart_send.c \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacrocommon.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/mpu_wrappers.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/queue.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h \
- /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/list.h
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/list.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/driver/leddrv/inc/sl_simple_led.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/driver/leddrv/inc/sl_led.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_status.h:
@@ -87,6 +90,7 @@ uart_send.o: ../uart_send.c \
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_code_classification.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sli_code_classification.h:
 /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/autogen/sl_simple_led_instances.h:
+../mystruct-def.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/FreeRTOS.h:
 /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/FreeRTOSConfig.h:
 /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/autogen/RTE_Components.h:
@@ -155,5 +159,7 @@ uart_send.o: ../uart_send.c \
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacrocommon.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/mpu_wrappers.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/queue.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/list.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h:

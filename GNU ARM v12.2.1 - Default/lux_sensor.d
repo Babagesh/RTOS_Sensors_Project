@@ -76,8 +76,14 @@ lux_sensor.o: ../lux_sensor.c \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacrocommon.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/mpu_wrappers.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/queue.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h \
- /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/list.h
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/list.h \
+ /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/autogen/sl_i2cspm_instances.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/driver/i2cspm/inc/sl_i2cspm.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_i2c.h \
+ ../mystruct-def.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/driver/leddrv/inc/sl_simple_led.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/driver/leddrv/inc/sl_led.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_status.h:
@@ -155,5 +161,11 @@ lux_sensor.o: ../lux_sensor.c \
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacrocommon.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/mpu_wrappers.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/queue.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/list.h:
+/Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/autogen/sl_i2cspm_instances.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/driver/i2cspm/inc/sl_i2cspm.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_i2c.h:
+../mystruct-def.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h:

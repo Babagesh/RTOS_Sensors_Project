@@ -19,16 +19,15 @@
 #include "sl_simple_led_instances.h"
 #include "FreeRTOS.h"
 #include "queue.h"
+#include "sl_i2cspm_instances.h"
 #include "mystruct-def.h"
 #include "task.h"
+#include "string.h"
 
 /*******************************************************************************
  *******************************   DEFINES   ***********************************
  ******************************************************************************/
 
-#ifndef LED_INSTANCE
-#define LED_INSTANCE               sl_led_led0
-#endif
 
 #ifndef TOOGLE_DELAY_MS
 #define TOOGLE_DELAY_MS            1000
@@ -55,6 +54,8 @@
  ******************************************************************************/
 
 static void lux_task(void *arg);
+extern QueueHandle_t light_queue_handle;
+extern QueueHandle_t transmit_queue_handle;
 
 /*******************************************************************************
  **************************   GLOBAL FUNCTIONS   *******************************
@@ -113,10 +114,101 @@ static void lux_task(void *arg)
   (void)&arg;
 
   //Use the provided calculation macro to convert milliseconds to OS ticks
-  const TickType_t xDelay = pdMS_TO_TICKS(TOOGLE_DELAY_MS);;
+    TickType_t cur_delay = portMAX_DELAY;
+    I2C_TransferSeq_TypeDef i2c_req;
+    uint8_t tx_buf[1];
+    uint8_t rx_buf[2];
 
+    uint8_t init_buf[3] = {0x00, 0x00, 0x00};
+    i2c_req.addr = (0x10 << 1);
+    i2c_req.flags = I2C_FLAG_WRITE;
+    i2c_req.buf[0].data = init_buf;
+    i2c_req.buf[0].len = 3;
+    I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
   while (1) {
-    //Wait for specified delay
+      light_command cmd;
+
+      if(xQueueReceive(light_queue_handle, &cmd, cur_delay) == pdPASS)
+        {
+            if(!strncmp(cmd.cmd, "sc", 2))
+              {
+                tx_buf[0] = 0x07;
+                i2c_req.addr = (0x10 << 1);
+                i2c_req.flags = I2C_FLAG_WRITE_READ;
+                i2c_req.buf[0].data = tx_buf;
+                i2c_req.buf[0].len = 1;
+                i2c_req.buf[1].data = rx_buf;
+                i2c_req.buf[1].len = 2;
+
+                bool i2c_ret = I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
+
+                if(!i2c_ret)
+                  {
+                    if(rx_buf[0] == 0x81)
+                    {
+                      sensor_data status_msg;
+                      status_msg.type = 3; // DIFFERENCE 6: Type 3 is Lux Status
+                      status_msg.value = 1.0;
+                      xQueueSend(transmit_queue_handle, &status_msg, 0);
+                    }
+                  }
+              }
+            else if(!strncmp(cmd.cmd, "pr", 2))
+              {
+                if(cmd.time != 0)
+                  {
+                    cur_delay = pdMS_TO_TICKS(cmd.time);
+                  }
+              }
+            else if(!strncmp(cmd.cmd, "cr", 2))
+              {
+                cur_delay = portMAX_DELAY;
+              }
+
+            if(!strncmp(cmd.cmd, "or", 2) || !strncmp(cmd.cmd, "pr", 2))
+              {
+                tx_buf[0] = 0x04;
+                i2c_req.addr = (0x10 << 1);
+                i2c_req.flags = I2C_FLAG_WRITE_READ;
+                i2c_req.buf[0].data = tx_buf;
+                i2c_req.buf[0].len = 1;
+                i2c_req.buf[1].data = rx_buf;
+                i2c_req.buf[1].len = 2;
+
+                bool i2c_ret = I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req);
+                if(!i2c_ret)
+                  {
+                    uint16_t raw_lux = (rx_buf[1] << 8) | rx_buf[0];
+                    float lux_final = (float)raw_lux * 0.0576f;
+
+                    sensor_data data;
+                    data.type = 1;
+                    data.value = lux_final;
+                    xQueueSend(transmit_queue_handle, &data, 0);
+                  }
+              }
+
+        }
+      else if(cur_delay != portMAX_DELAY)
+        {
+                tx_buf[0] = 0x04;
+                i2c_req.addr = (0x10 << 1);
+                i2c_req.flags = I2C_FLAG_WRITE_READ;
+                i2c_req.buf[0].data = tx_buf;
+                i2c_req.buf[0].len = 1;
+                i2c_req.buf[1].data = rx_buf;
+                i2c_req.buf[1].len = 2;
+
+                if (I2CSPM_Transfer(sl_i2cspm_qwiic, &i2c_req) == 0) {
+                    uint16_t raw_lux = (rx_buf[1] << 8) | rx_buf[0];
+                    float lux_final = (float)raw_lux * 0.0576f;
+
+                    sensor_data data;
+                    data.type = 1;
+                    data.value = lux_final;
+                    xQueueSend(transmit_queue_handle, &data, 0);
+                }
+        }
 
   }
 }

@@ -17,16 +17,17 @@
 
 #include "sl_simple_led.h"
 #include "sl_simple_led_instances.h"
+#include "mystruct-def.h"
 #include "FreeRTOS.h"
+#include "sl_uartdrv_instances.h"
+#include "queue.h"
 #include "task.h"
 
 /*******************************************************************************
  *******************************   DEFINES   ***********************************
  ******************************************************************************/
 
-#ifndef LED_INSTANCE
-#define LED_INSTANCE               sl_led_led0
-#endif
+
 
 #ifndef TOOGLE_DELAY_MS
 #define TOOGLE_DELAY_MS            1000
@@ -53,6 +54,10 @@
  ******************************************************************************/
 
 static void uart_send_task(void *arg);
+QueueHandle_t transmit_queue_handle;
+StaticQueue_t transmit_queue;
+uint8_t transmit_queue_buffer[sizeof(sensor_data) * 5];
+
 
 /*******************************************************************************
  **************************   GLOBAL FUNCTIONS   *******************************
@@ -110,8 +115,6 @@ static void uart_send_task(void *arg)
 {
   (void)&arg;
 
-  //Use the provided calculation macro to convert milliseconds to OS ticks
-  const TickType_t xDelay = pdMS_TO_TICKS(TOOGLE_DELAY_MS);;
 
   while (1) {
 

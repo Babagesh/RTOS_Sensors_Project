@@ -8,6 +8,11 @@ typedef struct{
   char cmd[3];
 }temp_command;
 
+typedef struct{
+  float value;
+  int type;
+}sensor_data;
+
 
 
 
