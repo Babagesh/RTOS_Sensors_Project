@@ -129,7 +129,7 @@ static void uart_send_task(void *arg)
       xQueueReceive(transmit_queue_handle, &data, portMAX_DELAY);
       if(data.type == 0) // Temp sensor reading
         {
-          sprintf(uart_tx_string, "Temp Sensor Reading: %.2f\r\n", data.value);
+          sprintf(uart_tx_string, "Temp/Humid Sensor Reading: %.2f\r\n", data.value);
           UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
         }
       else if(data.type == 1) // Lux Sensor reading
@@ -146,7 +146,7 @@ static void uart_send_task(void *arg)
             }
           else if(data.value == 0)
             {
-              sprintf(uart_tx_string, "Temp Sensor not plugged in or detected! \r\n");
+              sprintf(uart_tx_string, "Temp/Humid Sensor not plugged in or detected! \r\n");
               UARTDRV_TransmitB(uart_send_handle, uart_tx_string, strlen(uart_tx_string));
             }
 
@@ -166,7 +166,16 @@ static void uart_send_task(void *arg)
         }
       else if(data.type == 4)
         {
-
+          if(data.value == 0)
+            {
+              sprintf(uart_tx_string, "\033[2J[Temp/Humid Reading Cleared to 0\r\n");
+              UARTDRV_TransmitB(uart_send_handle, (uint8_t *)uart_tx_string, strlen(uart_tx_string));
+            }
+          else
+            {
+              sprintf(uart_tx_string, "\033[2J[Lux Reading Cleared to 0\r\n");
+              UARTDRV_TransmitB(uart_send_handle, (uint8_t *)uart_tx_string, strlen(uart_tx_string));
+            }
         }
   }
 }

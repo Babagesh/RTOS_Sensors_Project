@@ -77,6 +77,25 @@ uart_send.o: ../uart_send.c \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacrocommon.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/mpu_wrappers.h \
+ /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/autogen/sl_uartdrv_instances.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emdrv/uartdrv/inc/uartdrv.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_peripheral.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_peripheral_types.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_clock.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_usart.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_eusart.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_eusart_compat.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/clock_manager/inc/sl_clock_manager.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_clock.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emdrv/common/inc/ecode.h \
+ /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/uartdrv_config.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emdrv/dmadrv/inc/dmadrv.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emdrv/dmadrv/inc/s2_signals/dmadrv_signals.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_ldma.h \
+ /Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/dmadrv_config.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/sleeptimer/inc/sl_sleeptimer.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_common.h \
+ /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_assert.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/queue.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h \
  /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/list.h \
@@ -159,6 +178,25 @@ uart_send.o: ../uart_send.c \
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure/portmacrocommon.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/mpu_wrappers.h:
+/Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/autogen/sl_uartdrv_instances.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emdrv/uartdrv/inc/uartdrv.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_peripheral.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_peripheral_types.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_clock.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_usart.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_eusart.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_eusart_compat.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/clock_manager/inc/sl_clock_manager.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/device_manager/inc/sl_device_clock.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emdrv/common/inc/ecode.h:
+/Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/uartdrv_config.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emdrv/dmadrv/inc/dmadrv.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emdrv/dmadrv/inc/s2_signals/dmadrv_signals.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/emlib/inc/em_ldma.h:
+/Users/bjethwani/SimplicityStudio/v5_workspace/blink_kernel_freertos_project/config/dmadrv_config.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/service/sleeptimer/inc/sl_sleeptimer.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_common.h:
+/Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//platform/common/inc/sl_assert.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/queue.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/task.h:
 /Users/bjethwani/SimplicityStudio/SDKs/simplicity_sdk//util/third_party/freertos/kernel/include/list.h:
